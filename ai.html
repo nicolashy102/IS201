@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS5 Guessing Game</title>
+
+<style>
+body {
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+.container {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    margin: auto;
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #003791;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0055cc;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎮 PS5 Number Challenge</h1>
+    <p>Guess a number between 1 and 20 to unlock your PS5 reward!</p>
+
+    <input type="number" id="guess" placeholder="Enter guess">
+    <br>
+    <button onclick="checkGuess()">Guess</button>
+
+    <p id="message"></p>
+    <p id="tries"></p>
+
+    <a href="scratch.html" style="color:white;">Back to Scratch Page</a>
+</div>
+
+<script>
+let secretNumber = Math.floor(Math.random() * 20) + 1;
+let attempts = 0;
+
+function checkGuess() {
+    let guess = Number(document.getElementById("guess").value);
+    attempts++;
+
+    if (guess === secretNumber) {
+        document.getElementById("message").innerHTML =
+        "🏆 Correct! You unlocked a PS5 trophy!";
+    }
+    else if (guess < secretNumber) {
+        document.getElementById("message").innerHTML =
+        "⬆ Too low! Try again.";
+    }
+    else {
+        document.getElementById("message").innerHTML =
+        "⬇ Too high! Try again.";
+    }
+
+    document.getElementById("tries").innerHTML =
+    "Attempts: " + attempts;
+}
+</script>
+
+</body>
+</html>
